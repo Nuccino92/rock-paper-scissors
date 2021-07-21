@@ -1,67 +1,60 @@
-//making a game of rock paper scossrs where a user of the site plays against a computer
 
-//need to create a function where a computer is made to randomly select between rock, paper or scissors
+// function to generate a random selection for computer
 
+let playerScore = 0;
+let computerScore = 0;
 
+let playerSelection;
+let computerSelection;
 
-
+const choices = ["rock", "paper", "scissors"];
 
 function computerPlay() {
-    compChoice = Math.floor(Math.random()*3);
-    
-    if (compChoice == 0) {
-        return "Rock";
-    }   
-    else if (compChoice == 1) {
-        return "Paper";
-    }
-    else (compChoice == 2) 
-        return "Scissors";
+    return choices[Math.floor(Math.random()*choices.length)];
 }
-  
 
-
-//need to create a function to choose the winner of the 1 round
-
-function playRound(playerSelection, computerSelection) {
-
-
-
-    if (playerSelection == "Rock" && computerSelection == "Rock") {
+function playRound() {
+    
+    if (playerSelection.toLowerCase() == "rock".toLowerCase() && computerSelection == "rock") {
         return "You tied";
     }
-    if (playerSelection == "Rock" && computerSelection == "Paper") {
-        return "You lost";
+    if (playerSelection.toLowerCase() == "rock".toLowerCase() && computerSelection == "paper") {
+        computerScore++; return "You lost";
     }
-    if (playerSelection == "Rock" && computerSelection == "Scissors") {
-        return "You won!";
+    if (playerSelection.toLowerCase() == "rock".toLowerCase() && computerSelection == "scissors") {
+        playerScore++; return "You won!";
     }
-    if (playerSelection == "Paper" && computerSelection == "Rock") {
-        return "You won!";
+    if (playerSelection.toLowerCase() == "paper".toLowerCase() && computerSelection == "rock") {
+        playerScore++; return "You won!";
     }
-    if (playerSelection == "Paper" && computerSelection == "Paper") {
+    if (playerSelection.toLowerCase() == "paper".toLowerCase() && computerSelection == "paper") {
         return "You tied";
     }
-    if (playerSelection == "Paper" && computerSelection == "Scissors") {
-        return "You lost";
+    if (playerSelection.toLowerCase() == "paper".toLowerCase() && computerSelection == "scissors") {
+        computerScore++; return "You lost";
     }
-    if (playerSelection == "Scissors" && computerSelection == "Rock") {
-        return "You lost";
+    if (playerSelection.toLowerCase() == "scissors".toLowerCase() && computerSelection == "rock") {
+        computerScore++; return "You lost";
     }
-    if (playerSelection == "Scissors" && computerSelection == "Paper") {
-        return "You won!";
+    if (playerSelection.toLowerCase() == "scissors".toLowerCase() && computerSelection == "paper") {
+        playerScore++; return "You won!";
     }
-    if (playerSelection == "Scissors" && computerSelection == "Scissors") {
+    if (playerSelection.toLowerCase() == "scissors".toLowerCase() && computerSelection == "scissors") {
         return "You tied";
     }
 }
 
-    const computerSelection = computerPlay();
-    const playerSelection = "Rock";
-        if (playerSelection.toLocaleLowerCase() ==) 
-   
-    
-    console.log(computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
-    
+function game() {
 
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    playRound()
+
+}
+
+
+
+
+
+console.log(playRound())
