@@ -1,83 +1,77 @@
 
-// the function to play a game of 5 rounds
-function game() {
+let playerScore = 0;
+let computerScore = 0;
 
-    const games = 5;
-    let playerScore = 0;
-    let computerScore = 0;
+const scoreBoard_div = document.querySelector(".score-board");
+const computerScore_span = document.getElementById("computer-score");
+const playerScore_span = document.getElementById("player-score");
+const result_p = document.querySelector(".result > p");
+const rock_div = document.getElementById("img-r");
+const paper_div = document.getElementById("img-p");
+const scissors_div = document.getElementById("img-s");
+const actionMessage_div = document.getElementById("action-message");
+
     
-// created loop for the game    
-    for (let i = 0; i < games; i++) {
+    function main() {
+        rock_div.addEventListener('click', function(){
+            playRound("Rock");
+        })
+        paper_div.addEventListener('click', function(){
+            playRound("Paper");
+        })
+        scissors_div.addEventListener('click', function(){
+            playRound("Scissors");
+        })
+    }
+    main();
 
-// the player input promt, creates the player choice
-        let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
-
-// computer choices       
-        const choices = ["rock", "paper", "scissors"];
-
-// created function to generate a computer choice and give the computer selection a value    
     function computerPlay() {
-    return choices[Math.floor(Math.random()*choices.length)];
+        const choices = ["Rock", "Paper", "Scissors"];
+        const randomNumber = (Math.floor(Math.random()*3));
+        return choices[randomNumber];
     }
-    let computerSelection = computerPlay();
+
+function playRound(playerSelection) {
+    const computerSelection = computerPlay();
+    if (playerSelection == "Rock" && computerSelection == "Rock") {
+        tied(playerSelection, computerSelection);
+    }
+    if (playerSelection == "Rock" && computerSelection == "Paper") {
+        lose(playerSelection, computerSelection);
+    }
+    if (playerSelection == "Rock" && computerSelection == "Scissors") {
+        win(playerSelection, computerSelection);
+    }
+    if (playerSelection == "Paper" && computerSelection == "Rock") {
+        win(playerSelection, computerSelection);
+    }
+    if (playerSelection == "Paper" && computerSelection == "Paper") {
+        tied(playerSelection, computerSelection);
+    }
+    if (playerSelection == "Paper" && computerSelection == "Scissors") {
+        lose(playerSelection, computerSelection);
+    }
+    if (playerSelection == "Scissors" && computerSelection == "Rock") {
+        lose(playerSelection, computerSelection);
+    }
+    if (playerSelection == "Scissors" && computerSelection == "Paper") {
+        win(playerSelection, computerSelection);
+    }
+    if (playerSelection == "Scissors" && computerSelection == "Scissors") {
+        tied(playerSelection, computerSelection);
+    }
+}
+function win(playerSelection, computerSelection) {
+    playerScore++;
+    playerScore_span.textContent = playerScore;
+    result_p.textContent = "The computer picked " + computerSelection + ": You Won!";
     
-// created results for each round using playround function and stored the score in each   
-    let round = playRound (playerSelection, computerSelection);
-    if(round === "You won!") {
-        playerScore++;
-        console.log("You won! " + "the score is " + playerScore + " to " + computerScore);
-    }
-    else if (round === "You lost") {
-        computerScore++;
-        console.log("You lost " + "the score is " + playerScore + " to " + computerScore);
-    }
-    else if (round === "You tied") {
-        console.log("You tied " + "the score is " + playerScore + " to " + computerScore);
-    }
 }
-    if(playerScore > computerScore) {
-        console.log("You beat the computer " + playerScore + " to " + computerScore);
-    }
-    else if (playerScore < computerScore) {
-        console.log("You lost to the computer " + playerScore + " to " + computerScore);
-    }
-    else console.log("You tied the game.")
+function tied(playerSelection, computerSelection) {
+    result_p.textContent = "You both selected " + playerSelection;
 }
-//end of the game function
-
-
-// the function that compares theselections of the player and computer and returns a value to be used in game
-function playRound(playerSelection, computerSelection) {
-    
-    if (playerSelection.toLowerCase() == "rock".toLowerCase() && computerSelection == "rock") {
-        return "You tied";
-    }
-    if (playerSelection == "rock" && computerSelection == "paper") {
-        return "You lost";
-    }
-    if (playerSelection == "rock" && computerSelection == "scissors") {
-        return "You won!";
-    }
-    if (playerSelection == "paper" && computerSelection == "rock") {
-        return "You won!";
-    }
-    if (playerSelection == "paper" && computerSelection == "paper") {
-        return "You tied";
-    }
-    if (playerSelection == "paper" && computerSelection == "scissors") {
-       return "You lost";
-    }
-    if (playerSelection == "scissors" && computerSelection == "rock") {
-        return "You lost";
-    }
-    if (playerSelection == "scissors" && computerSelection == "paper") {
-        return "You won!";
-    }
-    if (playerSelection == "scissors" && computerSelection == "scissors") {
-        return "You tied";
-    }
+function lose(playerSelection, computerSelection) {
+    computerScore++;
+    computerScore_span.textContent = computerScore;
+    result_p.textContent = "The computer picked " + computerSelection + " :(";
 }
-// end of the playround function
-
-console.log(game())
-

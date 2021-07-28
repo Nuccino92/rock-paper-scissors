@@ -4,10 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <header>
+        <h1>Just a game of Rock Paper Scissors</h1>
+    </header>
     
+    <div class='score-board'>
+        <div id="player-plate" class='nameplate'>You</div>
+        <div id="computer-plate" class='nameplate'>CPU</div>
+        <span id="player-score">0</span>:<span id="computer-score">0</span>
+    </div>
+
+    <div class="result">
+        <p>Select one</p>
+    </div>
+
+    <div class="choices">
+        <div class="choice" id="img-r">
+            <img src="pictures/rock.png" width="120px" height="120px" alt="Rock Image">
+        </div>
+        <div class="choice" id="img-p">
+            <img src="pictures/paper.png" width="85px" height="85px" alt="Paper Image">
+        </div>
+        <div class="choice" id="img-s">
+            <img src="pictures/scissors.png" width="110px" height="110px" alt="Scissors Image">
+        </div>
+    </div>
+
+    <div id="action-message">Make your pick i'm waiting</div>
+
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
