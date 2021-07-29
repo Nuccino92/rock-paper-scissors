@@ -10,7 +10,18 @@ const rock_div = document.getElementById("img-r");
 const paper_div = document.getElementById("img-p");
 const scissors_div = document.getElementById("img-s");
 const actionMessage_div = document.getElementById("action-message");
+const reset_div = document.getElementById("reset")
 
+    
+    function reset() {
+        reset_div.addEventListener('click', function() {
+            playerScore_span.textContent = playerScore;
+            computerScore_span.textContent = computerScore;
+            playerScore = 0;
+            computerScore = 0;
+        })
+    }
+    reset();
     
     function main() {
         rock_div.addEventListener('click', function(){
@@ -65,13 +76,19 @@ function win(playerSelection, computerSelection) {
     playerScore++;
     playerScore_span.textContent = playerScore;
     result_p.textContent = "The computer picked " + computerSelection + ": You Won!";
-    
+    scoreBoard_div.classList.add('win-color');  //colors scoreboard
+    setTimeout(function(){scoreBoard_div.classList.remove('win-color')}, 700);
 }
 function tied(playerSelection, computerSelection) {
     result_p.textContent = "You both selected " + playerSelection;
+    scoreBoard_div.classList.add('tie-color');  //colors scoreboard
+    setTimeout(function(){scoreBoard_div.classList.remove('tie-color')}, 700);
 }
 function lose(playerSelection, computerSelection) {
     computerScore++;
     computerScore_span.textContent = computerScore;
     result_p.textContent = "The computer picked " + computerSelection + " :(";
+    scoreBoard_div.classList.add('lose-color');  //colors scoreboard
+    setTimeout(function(){scoreBoard_div.classList.remove('lose-color')}, 700);
 }
+

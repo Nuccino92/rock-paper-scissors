@@ -3,8 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
+html, body {
     background-color: rgb(6, 22, 29);
+    margin: 0;
+    height: 100%;
 }
 
 header {
@@ -69,7 +71,7 @@ header > h1 {
 
 .choice {
     display: inline-block;
-    margin: 0 54px;
+    margin: 0 47px;
     transition: all .17s ease;
 }
 
@@ -82,10 +84,39 @@ header > h1 {
     cursor: pointer;
     transform: scale(1.6);
 }
-
+.choice:active {
+    transform: scale(1.4);
+}
 #action-message {
     text-align: center;
     color: rgb(243, 92, 92);
     font-size: 25px;
     font-family: 'Courier New', Courier, monospace;
+}
+.win-color {
+    border: 3px solid rgb(41, 235, 15);
+    box-shadow: 0 0 10px rgb(41, 235, 15);
+}
+.lose-color {
+    border: 3px solid rgb(231, 15, 15);
+    box-shadow: 0 0 10px rgb(231, 15, 15);
+}
+.tie-color {
+    border: 3px solid rgb(230, 217, 41);
+    box-shadow: 0 0 10px rgb(230, 217, 41);
+}
+#reset {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: white;
+    font-size: 32px;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 5px 12px;
+    margin: 45px 85px;
+    background-color: rgba(161, 172, 13, 0.822);
+}
+#reset:hover {
+    cursor: pointer;
 }
