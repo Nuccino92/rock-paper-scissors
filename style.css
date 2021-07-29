@@ -5,7 +5,6 @@
 }
 html, body {
     background-color: rgb(6, 22, 29);
-    margin: 0;
     height: 100%;
 }
 
@@ -107,6 +106,7 @@ header > h1 {
 }
 #reset {
     position: absolute;
+    display: inline-block;
     bottom: 0;
     right: 0;
     color: white;
@@ -119,4 +119,8 @@ header > h1 {
 }
 #reset:hover {
     cursor: pointer;
+    transform: scale(1.07);
+}
+#reset:active {
+    transform: scale(1.01);
 }

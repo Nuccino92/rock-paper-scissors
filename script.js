@@ -1,7 +1,4 @@
 
-let playerScore = 0;
-let computerScore = 0;
-
 const scoreBoard_div = document.querySelector(".score-board");
 const computerScore_span = document.getElementById("computer-score");
 const playerScore_span = document.getElementById("player-score");
@@ -10,13 +7,16 @@ const rock_div = document.getElementById("img-r");
 const paper_div = document.getElementById("img-p");
 const scissors_div = document.getElementById("img-s");
 const actionMessage_div = document.getElementById("action-message");
-const reset_div = document.getElementById("reset")
+const reset_span = document.getElementById("reset")
 
-    
+let playerScore = 0;
+let computerScore = 0;
+
+
     function reset() {
-        reset_div.addEventListener('click', function() {
-            playerScore_span.textContent = playerScore;
-            computerScore_span.textContent = computerScore;
+        reset_span.addEventListener('click', function() {
+            playerScore_span.textContent = 0;
+            computerScore_span.textContent = 0;
             playerScore = 0;
             computerScore = 0;
         })
@@ -75,20 +75,20 @@ function playRound(playerSelection) {
 function win(playerSelection, computerSelection) {
     playerScore++;
     playerScore_span.textContent = playerScore;
-    result_p.textContent = "The computer picked " + computerSelection + ": You Won!";
+    result_p.textContent = "The computer picked " + computerSelection + ": You Won!"; 
     scoreBoard_div.classList.add('win-color');  //colors scoreboard
-    setTimeout(function(){scoreBoard_div.classList.remove('win-color')}, 700);
+    setTimeout(function(){scoreBoard_div.classList.remove('win-color')}, 300);
 }
 function tied(playerSelection, computerSelection) {
     result_p.textContent = "You both selected " + playerSelection;
     scoreBoard_div.classList.add('tie-color');  //colors scoreboard
-    setTimeout(function(){scoreBoard_div.classList.remove('tie-color')}, 700);
+    setTimeout(function(){scoreBoard_div.classList.remove('tie-color')}, 300);
 }
 function lose(playerSelection, computerSelection) {
     computerScore++;
     computerScore_span.textContent = computerScore;
     result_p.textContent = "The computer picked " + computerSelection + " :(";
     scoreBoard_div.classList.add('lose-color');  //colors scoreboard
-    setTimeout(function(){scoreBoard_div.classList.remove('lose-color')}, 700);
+    setTimeout(function(){scoreBoard_div.classList.remove('lose-color')}, 300);
 }
 
